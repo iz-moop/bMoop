@@ -100,13 +100,9 @@ const RegisterScreen = (props) => {
           backgroundColor: '#307ecc',
           justifyContent: 'center',
         }}>
-       <Image
-            source={require('../Images/success.png')}
-            style={{
-            height: 150,
-            resizeMode: 'contain',
-            alignSelf: 'center'
-          }}
+        <Image
+          source={require('../Images/success.png')}
+          style={{height: 150, resizeMode: 'contain', alignSelf: 'center'}}
         />
         <Text style={styles.successTextStyle}>Registration Successful.</Text>
         <TouchableOpacity
@@ -128,12 +124,20 @@ const RegisterScreen = (props) => {
           alignContent: 'center',
         }}>
         <View style={{alignItems: 'center'}}>
-         
+          <Image
+            source={require('../Images/aboutreact.png')}
+            style={{
+              width: '50%',
+              height: 100,
+              resizeMode: 'contain',
+              margin: 30,
+            }}
+          />
         </View>
         <KeyboardAvoidingView enabled>
           <View style={styles.SectionStyle}>
-         
-            <TextInput
+
+           <TextInput
               style={styles.inputStyle}
               onChangeText={(UserName) => setUserName(UserName)}
               underlineColorAndroid="#f000"
@@ -202,7 +206,6 @@ const RegisterScreen = (props) => {
             onPress={handleSubmitButton}>
             <Text style={styles.buttonTextStyle}>REGISTER</Text>
           </TouchableOpacity>
-
         </KeyboardAvoidingView>
       </ScrollView>
     </View>
@@ -211,13 +214,13 @@ const RegisterScreen = (props) => {
 export default RegisterScreen;
 
 const styles = StyleSheet.create({
-
   SectionStyle: {
     flexDirection: 'row',
     height: 40,
-    marginTop: 30,
+    marginTop: 20,
     marginLeft: 35,
     marginRight: 35,
+    margin: 10,
   },
   buttonStyle: {
     backgroundColor: '#7DE24E',
@@ -225,12 +228,11 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     borderColor: '#7DE24E',
     height: 40,
-    width:170,
     alignItems: 'center',
     borderRadius: 30,
-    marginLeft:100,  
-    marginRight:35,
-    marginTop: 150,
+    marginLeft: 35,
+    marginRight: 35,
+    marginTop: 20,
     marginBottom: 20,
   },
   buttonTextStyle: {
@@ -245,7 +247,6 @@ const styles = StyleSheet.create({
     paddingRight: 15,
     borderWidth: 1,
     borderRadius: 30,
-    top:80,
     borderColor: '#dadae8',
   },
   errorTextStyle: {
@@ -259,5 +260,4 @@ const styles = StyleSheet.create({
     fontSize: 18,
     padding: 30,
   },
-  
 });

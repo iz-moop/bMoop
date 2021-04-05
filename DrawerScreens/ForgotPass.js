@@ -56,7 +56,7 @@ const styles=StyleSheet.create(
 
         container:{
             flex:1,
-             backgroundColor:'#992424',
+             backgroundColor:'#307ecc',
              justifyContent:'center',
              height:700,
         

@@ -21,13 +21,13 @@ const SplashScreen = ({navigation}) => {
         navigation.replace(value === null ? 'Auth' : 'DrawerNavigationRoutes'),
       );
     }, 5000);
-  }, []);
+  }, []); 
 
   return (
     <View style={styles.container}>
 
       <Image
-                source={require('../Images/Log.png')}
+                source={require('../Images/aboutreact.png')}
         style={{width: '50%', resizeMode: 'contain', margin: 30}}
       />
 

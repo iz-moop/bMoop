@@ -15,7 +15,6 @@ import LoginScreen from '../Moopapp/DrawerScreens/LoginScreen';
 import RegisterScreen from '../Moopapp/DrawerScreens/RegisterScreen';
 import DrawerNavigationRoutes from '../Moopapp/DrawerScreens/DrawerNavigationRoutes';
 import ForgotPass from '../Moopapp/DrawerScreens/ForgotPass';
-import List from '../Moopapp/Components/List';
 const Stack = createStackNavigator();
 
 const Auth = () => {
@@ -85,12 +84,7 @@ const App = () => {
           options={{headerShown: false}}
         />
 
-<Stack.Screen
-      name="List"
-      component={List}
-      options={{headerShown:false
-      }}
-      />
+
       
       </Stack.Navigator>
     </NavigationContainer>

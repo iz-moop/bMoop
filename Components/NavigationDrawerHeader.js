@@ -21,6 +21,15 @@ const NavigationDrawerHeader = (props) => {
           style={{width: 25, height: 25, marginLeft: 5}}
         />
       </TouchableOpacity>
+
+<TouchableOpacity onPress={toggleDrawer}>
+<Image
+                source={require('../Images/fill.png')}
+        style={{width: 30, height: 30, marginLeft: 290}}
+      />
+
+</TouchableOpacity>
+
     </View>
   );
 };

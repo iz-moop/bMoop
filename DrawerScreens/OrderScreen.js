@@ -18,7 +18,7 @@ import {
 
 
 
-const Orderscreen = () => 
+const Orderscreen = (props) => 
 {
   
   const [search, setSearch] = useState('');
@@ -100,6 +100,7 @@ const Orderscreen = () =>
     // Function for click on an item
 
  //alert('Id : ' + item.id + ' Title : ' + item.title);
+
 
   Alert.alert(
     `Id: ${item.id} \nTitle: ${item.title} 
