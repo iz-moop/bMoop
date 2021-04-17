@@ -22,6 +22,7 @@ import Loader from '../Components/Loader';
 import { color } from 'react-native-reanimated';
 
 const LoginScreen = ({navigation}) => {
+  
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
   const [loading, setLoading] = useState(false);

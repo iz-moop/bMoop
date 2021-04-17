@@ -15,6 +15,7 @@ import LoginScreen from '../Moopapp/DrawerScreens/LoginScreen';
 import RegisterScreen from '../Moopapp/DrawerScreens/RegisterScreen';
 import DrawerNavigationRoutes from '../Moopapp/DrawerScreens/DrawerNavigationRoutes';
 import ForgotPass from '../Moopapp/DrawerScreens/ForgotPass';
+
 const Stack = createStackNavigator();
 
 const Auth = () => {
@@ -27,6 +28,9 @@ const Auth = () => {
         options={{headerShown:false,
         }}
       />
+
+
+
 
       <Stack.Screen
         name="RegisterScreen"
@@ -50,8 +54,7 @@ const Auth = () => {
       }}
       />
 
-
-
+ 
     </Stack.Navigator>
   );
 };
@@ -83,9 +86,7 @@ const App = () => {
           // Hiding header for Navigation Drawer as we will use our custom header
           options={{headerShown: false}}
         />
-
-
-      
+    
       </Stack.Navigator>
     </NavigationContainer>
   );

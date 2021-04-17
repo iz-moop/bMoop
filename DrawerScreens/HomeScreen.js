@@ -1,48 +1,47 @@
-// Example of Splash, Login and Sign Up in React Native
-// https://aboutreact.com/react-native-login-and-signup/
+import React,{Component} from 'react';
+import{View,Image,ImageBackground,StyleSheet,Text}from 'react-native';
 
-// Import React and Component
-import React from 'react';
-import {View, Text, SafeAreaView} from 'react-native';
 
-const HomeScreen = () => {
-  return (
-    <SafeAreaView style={{flex: 1}}>
-      <View style={{flex: 1, padding: 16}}>
-        <View
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Text
-            style={{
-              fontSize: 20,
-              textAlign: 'center',
-              marginBottom: 16,
-            }}>
-                      
-            This is the Home Screen
+export default class HomeScreen extends Component
+{
+    
+      
+    constructor(props)
+    {
+        super(props);
 
-          </Text>
-        </View>
-        <Text
-          style={{
-            fontSize: 18,
-            textAlign: 'center',
-            color: 'grey',
-          }}>
-        </Text>
-        <Text
-          style={{
-            fontSize: 16,
-            textAlign: 'center',
-            color: 'grey',
-          }}>
-        </Text>
-      </View>
-    </SafeAreaView>
-  );
-};
+        
 
-export default HomeScreen;
+    }
+
+    render()
+    {
+        return(
+
+    <View style={{ flex:1,justifyContent:'center',alignItems:'center'}}>
+
+<Text>This is Home Screen</Text>
+
+</View>
+    
+
+);
+
+}
+
+}
+
+const styles=StyleSheet.create(
+    {
+
+        txtt:{
+
+            fontSize:40,
+            top:150,
+            color:'red',
+            fontStyle:'italic',
+            
+        },
+
+
+    });

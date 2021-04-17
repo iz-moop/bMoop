@@ -3,8 +3,7 @@
 
 // import React in our code
 import React, {useState, useEffect,Component} from 'react';
-import { StackNavigator } from 'react-navigation';
-
+       
 // import all the components we are going to use
 import {
   SafeAreaView,
@@ -13,20 +12,31 @@ import {
   View,
   FlatList,
   TextInput,
+  Modal,
+  Button,
   Alert,
+  TouchableOpacity
 } from 'react-native';
 
 
-
-const Orderscreen = (props) => 
+const Orderscreen = ({navigation}) => 
 {
-  
+  const [isModalVisible, setModalVisible] = useState(false);
+	const [inputValue, setInputValue] = useState("");
+	const toggleModalVisibility = () => {
+		setModalVisible(!isModalVisible);
+    };
+
   const [search, setSearch] = useState('');
   const [filteredDataSource, setFilteredDataSource] = useState([]);
   const [masterDataSource, setMasterDataSource] = useState([]);
 
-  
-  useEffect(() => {
+  const item=()=>{
+
+    Alert.alert('hi')
+  }
+
+    useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/posts')
       .then((response) => response.json())
       .then((responseJson) => {
@@ -67,6 +77,8 @@ const Orderscreen = (props) =>
     
     return (
       // Flat List Item
+         
+
       <Text
         style={styles.itemStyle}
         onPress={() => getItem(item)}>
@@ -83,35 +95,23 @@ const Orderscreen = (props) =>
     
     return (
       // Flat List Item Separator
-      <View
-        style={{
-          height: 2,
-          width: '100%',
-          backgroundColor: '#C8C8C8',
-        }}
-      />
+      
+      <View style={{height: 2,width: '100%',backgroundColor: '#C8C8C8'}}/>
+      
     );
   };
 
+const getItem=(item)=>{
 
-  const getItem = (item) => {
-
-  
-    // Function for click on an item
-
- //alert('Id : ' + item.id + ' Title : ' + item.title);
+  Alert.alert('Id : ' + item.id + '\n'+'Title : ' + item.title);
 
 
-  Alert.alert(
-    `Id: ${item.id} \nTitle: ${item.title} 
-      
-    }`
-  )
-  };
+};
 
- 
+
     return (
-    <SafeAreaView style={{flex: 1}}>
+
+      <SafeAreaView style={{flex: 1}}>
       <View style={styles.container}>
         <TextInput
           style={styles.textInputStyle}
@@ -120,6 +120,32 @@ const Orderscreen = (props) =>
           underlineColorAndroid="transparent"
           placeholder="Search Here"
         />
+ <View>
+      <Modal animationType="slide"
+				transparent visible={isModalVisible}
+				presentationStyle="overFullScreen"
+				onDismiss={toggleModalVisibility}>
+				<View style={styles.viewWrapper}>
+					<View style={styles.modalView}>
+						<TextInput placeholder="Item"
+								value={inputValue} style={styles.textInput}
+								onChangeText={(value) => setInputValue(value)} />
+
+<TextInput placeholder="Price"
+								value={inputValue} style={styles.textInput}
+								onChangeText={(value) => setInputValue(value)} />
+
+						<Button title="Add" onPress={toggleModalVisibility} />
+					</View>
+				</View>
+			</Modal>
+      </View>
+
+        <Text style={styles.txt}>
+            Current Orders
+        </Text>
+
+       
         <FlatList
           data={filteredDataSource}
           keyExtractor={(item, index) => index.toString()}
@@ -127,7 +153,15 @@ const Orderscreen = (props) =>
           renderItem={ItemView}
         />
       </View>
+
+      <TouchableOpacity style={styles.addButton}
+      onPress={() =>navigation.navigate('AddUpdatePage')}>
+      <Text style={styles.addButtonText}>+</Text>
+      </TouchableOpacity>
+
     </SafeAreaView>
+
+
   );
 };
 
@@ -156,6 +190,50 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: 15
     },
+
+    txt:{
+      paddingLeft:100,
+      fontSize:22,
+      fontWeight:'bold'
+    },
+    addButton:{
+
+      position:'absolute',
+      zIndex:11,
+      right:20,
+      bottom:50,
+      backgroundColor:'#307ecc',
+      width:80,
+      height:80,
+      borderRadius:50,
+      alignItems:'center',
+      justifyContent:'center',
+      elevation:8,
+    },
+    addButtonText:{
+    color:'#fff',
+    fontSize:24,
+    },
+    modalContent: {
+      backgroundColor: 'white',
+      padding: 22,
+      justifyContent: 'center',
+      borderRadius: 4,
+      borderColor: 'rgba(0, 0, 0, 0.1)',
+      height:450,
+      width:360,
+      alignSelf:'center'
+    },
+    note: 
+    {
+    position:'relative',
+    padding:20,
+    paddingRight:100,
+    borderBottomWidth:2,
+    borderBottomColor:'#bdb76b' ,   
+    
+    },
+
 });
 
 export default Orderscreen;

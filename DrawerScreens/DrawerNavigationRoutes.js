@@ -11,11 +11,12 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 // Import Screens
 import HomeScreen from '../DrawerScreens/HomeScreen';
 import SettingsScreen from '../DrawerScreens/SettingScreen';
-import CustomSidebarMenu from '../Components/CustomSidebarMenu';
+import CustomSidebarMenu from '../DrawerScreens/CustomSidebarMenu';
 import NavigationDrawerHeader from '../Components/NavigationDrawerHeader';
 import FavoritesScreen from '../DrawerScreens/FavoritesScreen';
 import PayBillScreen from './PayBillScreen';
 import orderScreen from '../DrawerScreens/OrderScreen';
+import AddUpdatePage from  '../DrawerScreens/AddUpdatePage';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -148,9 +149,39 @@ const orderScreenStack = ({navigation}) => {
           
         }}
       />
+     
     </Stack.Navigator>
   );
 };
+
+const AddUpdatePageScreenStack = ({navigation}) => 
+{
+  return (
+    <Stack.Navigator
+      initialRouteName="AddUpdatePage"
+      screenOptions={{
+        headerLeft: () => (
+          <NavigationDrawerHeader navigationProps={navigation} />
+        ),
+        headerStyle: {
+          backgroundColor: '#307ecc', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}>
+      <Stack.Screen
+        name="AddUpdatePage"
+        component={AddUpdatePage}
+        options={{
+          title: 'Add/Update', //Set Header Title
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
 
 
 const DrawerNavigatorRoutes = (props) => {
@@ -193,6 +224,13 @@ const DrawerNavigatorRoutes = (props) => {
       options={{drawerLabel:"Order Screen"}}
       component={orderScreenStack}
       />
+
+    <Drawer.Screen
+    name="AddUpdatePageScreenStack"
+    options={{drawerLabel:"AddUpdatePage"}}
+    component={AddUpdatePageScreenStack}/>
+
+
 
     </Drawer.Navigator>
   );

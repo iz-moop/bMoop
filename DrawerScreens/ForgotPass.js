@@ -1,6 +1,7 @@
 import React,{Component,useState} from 'react';
 
-import{StyleSheet,Text,View,TextInput,TouchableOpacity,Keyboard,KeyboardAvoidingView, Alert} from 'react-native';
+import{StyleSheet,Text,View,TextInput,TouchableOpacity,Keyboard,KeyboardAvoidingView, Alert} 
+from 'react-native';
 
 export default class ForgotPass extends Component
 {
