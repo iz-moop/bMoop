@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import{View,Image,ImageBackground,StyleSheet,Text}from 'react-native';
 
 
-export default class HomeScreen extends Component
+export default class MenuScreen extends Component
 {
     
       
@@ -20,7 +20,7 @@ export default class HomeScreen extends Component
 
     <View style={{ flex:1,justifyContent:'center',alignItems:'center'}}>
 
-<Text>This is HomeScreen</Text>
+<Text>Hi</Text>
 
 </View>
     

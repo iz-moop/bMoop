@@ -33,7 +33,8 @@ const LoginScreen = ({navigation}) => {
   const handleSubmitPress = () => {
     setErrortext('');
     if (!userEmail) {
-      alert('Please fill Email');
+      navigation.replace('DrawerNavigationRoutes');
+     // alert('Please fill Email');
       return;
     }
     if (!userPassword) {
@@ -50,9 +51,9 @@ const LoginScreen = ({navigation}) => {
     }
     formBody = formBody.join('&');
 
-    fetch('https://aboutreact.herokuapp.com/login.php', {
-      method: 'POST',
-      body: formBody,
+    fetch(`http://139.59.65.210/moop/api/index.php/service/user/login?X-API-KEY=MoopApp2021@!&email=${userEmail}&password=${userPassword}`, {
+      method: 'GET',
+      
       headers: {
         //Header Defination
         'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
@@ -63,10 +64,11 @@ const LoginScreen = ({navigation}) => {
         //Hide Loader
         setLoading(false);
         console.log(responseJson);
+        console.log(responseJson.status);
         // If server response message same as Data Matched
-        if (responseJson.status == 1) {
-          AsyncStorage.setItem('user_id', responseJson.data[0].user_id);
-          console.log(responseJson.data[0].user_id);
+        if (responseJson.status === 'success') {
+          AsyncStorage.setItem('user_id', responseJson.data['id']);
+          console.log(responseJson.data['id']);
           navigation.replace('DrawerNavigationRoutes');
 
         } else {
@@ -80,7 +82,6 @@ const LoginScreen = ({navigation}) => {
         console.error(error);
       });
   };
-
   return (
     <View style={styles.mainBody}>
       <Loader loading={loading} />
@@ -95,7 +96,7 @@ const LoginScreen = ({navigation}) => {
           <KeyboardAvoidingView enabled>
             <View style={{alignItems: 'center'}}>
               <Image
-                source={require('../Images/aboutreact.png')}
+                source={require('../Images/Log.png')}
                 style={{
                   width: '50%',
                   height: 100,

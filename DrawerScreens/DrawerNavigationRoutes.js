@@ -10,13 +10,16 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 
 // Import Screens
 import HomeScreen from '../DrawerScreens/HomeScreen';
+import orderScreen from '../DrawerScreens/OrderScreen';
+import ReportsScreen from '../DrawerScreens/ReportsScreen';
 import SettingsScreen from '../DrawerScreens/SettingScreen';
+
 import CustomSidebarMenu from '../DrawerScreens/CustomSidebarMenu';
 import NavigationDrawerHeader from '../Components/NavigationDrawerHeader';
 import FavoritesScreen from '../DrawerScreens/FavoritesScreen';
-import PayBillScreen from './PayBillScreen';
-import orderScreen from '../DrawerScreens/OrderScreen';
-import AddUpdatePage from  '../DrawerScreens/AddUpdatePage';
+import PayBillScreen from '../DrawerScreens/PayBillScreen';
+import MenuScreen from '../DrawerScreens/MenuScreen'
+import AddUpdatePage from '../DrawerScreens/AddUpdatePage';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -65,7 +68,7 @@ const settingScreenStack = ({navigation}) => {
         name="SettingsScreen"
         component={SettingsScreen}
         options={{
-          title: 'Settings', //Set Header Title
+          title: 'Employee', //Set Header Title
         }}
       />
     </Stack.Navigator>
@@ -91,7 +94,7 @@ const favoritesScreenStack = ({navigation}) => {
         name="FavoritesScreen"
         component={FavoritesScreen}
         options={{
-          title: 'Favorite', //Set Header Title
+          title: 'Tables', //Set Header Title
         }}
       />
     </Stack.Navigator>
@@ -118,7 +121,7 @@ const paybillScreenStack = ({navigation}) => {
         name="PayBillScreen"
         component={PayBillScreen}
         options={{
-          title: 'PayBill', //Set Header Title
+          title: 'Transaction', //Set Header Title
         }}
       />
     </Stack.Navigator>
@@ -149,13 +152,67 @@ const orderScreenStack = ({navigation}) => {
           
         }}
       />
-     
     </Stack.Navigator>
   );
 };
 
-const AddUpdatePageScreenStack = ({navigation}) => 
-{
+const reportsScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator
+      initialRouteName="ReportsScreen"
+      screenOptions={{
+        headerLeft: () => (
+          <NavigationDrawerHeader navigationProps={navigation} />
+        ),
+        headerStyle: {
+          backgroundColor: '#307ecc', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}>
+      <Stack.Screen
+        name="ReportsScreen"
+        component={ReportsScreen}
+        options={{
+          title: 'Reports', //Set Header Title
+          
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const menuScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator
+      initialRouteName="MenuScreen"
+      screenOptions={{
+        headerLeft: () => (
+          <NavigationDrawerHeader navigationProps={navigation} />
+        ),
+        headerStyle: {
+          backgroundColor: '#307ecc', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}>
+      <Stack.Screen
+        name="MenuScreen"
+        component={MenuScreen}
+        options={{
+          title: 'MenuBuilder', //Set Header Title
+          
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const AddUpdatePageStack = ({navigation}) => {
   return (
     <Stack.Navigator
       initialRouteName="AddUpdatePage"
@@ -176,14 +233,12 @@ const AddUpdatePageScreenStack = ({navigation}) =>
         component={AddUpdatePage}
         options={{
           title: 'Add/Update', //Set Header Title
+          
         }}
       />
     </Stack.Navigator>
   );
 };
-
-
-
 const DrawerNavigatorRoutes = (props) => {
   return (
     <Drawer.Navigator
@@ -202,35 +257,46 @@ const DrawerNavigatorRoutes = (props) => {
         options={{drawerLabel: 'Home Screen'}}      
         component={homeScreenStack}
       />
+
+      <Drawer.Screen
+      name="orderScreenStack"
+      options={{drawerLabel:'Order Screen'}}
+      component={orderScreenStack}
+      />
+
+      
+      <Drawer.Screen
+        name="reportsScreenStack"
+        options={{drawerLabel: 'Reports'}}
+        component={reportsScreenStack}
+      />
+
       <Drawer.Screen
         name="settingScreenStack"
-        options={{drawerLabel: 'Setting Screen'}}
+        options={{drawerLabel: 'Employee'}}
         component={settingScreenStack}
       />
 
       <Drawer.Screen
       name="favoritesScreenStack"
-      options={{drawerLabel:'Favorites Screen'}}
+      options={{drawerLabel:'Tables'}}
       component={favoritesScreenStack}/>
 
       <Drawer.Screen
       name="paybillScreenStack"
-      options={{drawerLabel:"PayBill Screen"}}
+      options={{drawerLabel:"Transaction"}}
       component={paybillScreenStack}
       />
 
       <Drawer.Screen
-      name="orderScreenStack"
-      options={{drawerLabel:"Order Screen"}}
-      component={orderScreenStack}
-      />
+      name="menuScreenStack"
+      options={{drawerLabel:"Menu"}}
+      component={menuScreenStack}/>
 
-    <Drawer.Screen
-    name="AddUpdatePageScreenStack"
-    options={{drawerLabel:"AddUpdatePage"}}
-    component={AddUpdatePageScreenStack}/>
-
-
+      <Drawer.Screen
+      name="AddUpdatePageStack"
+      options={{drawerLabel:()=>null}}
+      component={AddUpdatePageStack}/>
 
     </Drawer.Navigator>
   );

@@ -27,7 +27,7 @@ const SplashScreen = ({navigation}) => {
     <View style={styles.container}>
 
       <Image
-                source={require('../Images/aboutreact.png')}
+                source={require('../Images/Log.png')}
         style={{width: '50%', resizeMode: 'contain', margin: 30}}
       />
 

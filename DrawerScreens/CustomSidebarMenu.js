@@ -100,5 +100,5 @@ const stylesSidebar = StyleSheet.create({
     //marginHorizontal: 10,
     //backgroundColor: '#fff',
     //marginTop: 15,
- // },
+ //},
 });
